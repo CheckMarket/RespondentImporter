@@ -1,0 +1,15 @@
+﻿@model CheckMarket.RespondentImporter.Models.ImportResult
+@{
+    ViewData["Title"] = "Importing";
+    @addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+}
+<div class="jumbotron">
+    <h1>Your file has been processed!</h1>
+    <p>We found @Model.RowsInFile rows in your file</p>
+    <div class="alert alert-success">@Model.RowsImported rows imported.</div>
+    @if (Model.RowsFailed > 0)
+    {
+        <div class="alert alert-warning">@Model.RowsFailed couldn't be imported.</div>
+    }
+    <a class="btn btn-info" asp-controller="Home" asp-action="Index">Upload new file</a>
+</div>

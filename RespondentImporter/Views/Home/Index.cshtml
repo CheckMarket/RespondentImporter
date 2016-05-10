@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<div class="col-sm-6">
+    <form id="frmReadFile" asp-controller="Home" asp-action="Configure" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="ddlSurveys">Choose your live survey</label>
+            <select id="ddlSurveys" class="form-control" name="surveyid">
+                <option value="0"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="uploadFile">Choose your file</label>
+            <input type="file" id="uploadFile" class="form-control" name="uploadFile" accept=".csv" />
+        </div>
+        <button id="btnSubmit" type="button" class="btn btn-primary">Read file</button>
+    </form>
+</div>
+@section scripts{
+    <script type="text/javascript" >
+        $(document).ready(function () {
+            CM.apps.importer.Initialize();
+        });
+    </script>
+}

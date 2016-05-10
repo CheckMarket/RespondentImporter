@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>  
+    <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-fallback-test-class="hidden" asp-fallback-test-property="visibility" asp-fallback-test-value="hidden" />
+</head>
+<body>
+    <div class="container">
+        <h1>Respondent importer</h1>
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+    </script>
+    <environment names="Development">
+        <script src="~/assets/js/app/apifactory.js"></script>
+        <script src="~/assets/js/app/importerapp.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/assets/js/dist/cm.importer.app.js" asp-file-version="true" ></script>
+    </environment>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

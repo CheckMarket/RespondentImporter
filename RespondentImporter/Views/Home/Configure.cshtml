@@ -1,0 +1,56 @@
+﻿@model CheckMarket.RespondentImporter.Models.ConfigureModel
+@{
+    ViewData["Title"] = "Configuration";
+    @addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
+}
+<div class="col-sm-9">
+    <form asp-controller="Home" asp-action="Import" enctype="multipart/form-data">
+        <input type="hidden" name="fileName" value="@Model.FileName" />
+        <input type="hidden" name="surveyId" value="@Model.SurveyId" />
+        <table class="table">
+            <colgroup>
+                <col width="50px" />
+                <col width="30%" />
+                <col />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>File Column</th>
+                    <th>Column header</th>
+                    <th>Survey question</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int col = 0; col < Model.Columns.Count; col++)
+            {
+                    <tr>
+                        <td>@(col + 1)</td>
+                        <td>
+                            <label for="@string.Concat("dllColumn", col)">@Model.Columns[col]</label>
+                        </td>
+                        <td>
+                            <select id="@string.Concat("dllColumn", col)" class="form-control question" name="@string.Concat("column_", col)">
+                                <option value="0">please select</option>
+                            </select>
+                            <select id="@string.Concat("ddlColumn", col, "_responses")" class="form-control responses hidden"  name="@string.Concat("responses_", col)">
+                                <option value="0">Rows contain response</option>
+                            </select>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button id="btnSubmit" type="submit" class="btn btn-primary">Import data</button>
+    </form>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        var View = View || {};
+        View.SurveyId = @Model.SurveyId;
+
+        $(document).ready(function () {
+            CM.apps.configurator.Initialize();
+        });
+    </script>
+}
+    

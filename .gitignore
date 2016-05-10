@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs/config/applicationhost.config
+/RespondentImporter/node_modules
+/RespondentImporter/Properties/PublishProfiles
+/RespondentImporter/wwwroot/upload
